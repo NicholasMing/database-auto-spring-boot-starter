@@ -1,0 +1,22 @@
+{
+  "properties": [
+    {
+      "name": "database.auto.auto-name",
+      "type": "java.lang.String",
+      "sourceType": "cn.lastmiles.database.auto.AutoDatabaseProperties",
+      "defaultValue": "create"
+    },
+    {
+      "name": "database.auto.show-sql",
+      "type": "java.lang.Boolean",
+      "sourceType": "cn.lastmiles.database.auto.AutoDatabaseProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "database.auto.dialect-class-name",
+      "type": "java.lang.String",
+      "sourceType": "cn.lastmiles.database.auto.AutoDatabaseProperties",
+      "defaultValue": "cn.lastmiles.database.auto.dialect.MysqlDialect"
+    }
+  ]
+}
