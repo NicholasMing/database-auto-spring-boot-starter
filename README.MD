@@ -9,6 +9,9 @@
    </dependency>
 ```
 ## 二、在application.properties中添加配置
+database.auto.auto-name=update
+>创建或者更新表结构，默认为update
+
 database.auto.package-name=com.ming.weapp
 >实体类所在的包名（必填）
 
@@ -17,7 +20,8 @@ database.auto.show-sql=true
 
 ## 说明
 ```
-database.auto.package-name 不填写，则不更新表结构，上线前请删除该配置
+1、database.auto.package-name 不填写，则不更新表结构，上线前请删除该配置
+2、database.auto.auto-name为create的时候，会产出原有表结构，重建，风险较高，请谨慎使用
 
 ```
 

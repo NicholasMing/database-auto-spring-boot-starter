@@ -6,7 +6,7 @@ import java.util.List;
 
 @ConfigurationProperties(prefix = "database.auto")
 public class AutoDatabaseProperties {
-    private String autoName = "create";
+    private String autoName = "update";
     private boolean showSql;
     private List<String> packageName;
     private String dialectClassName = "cn.lastmiles.database.auto.dialect.MysqlDialect";
