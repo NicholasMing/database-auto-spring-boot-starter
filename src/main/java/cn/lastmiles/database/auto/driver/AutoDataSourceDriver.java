@@ -120,8 +120,7 @@ public class AutoDataSourceDriver {
      * @throws IllegalAccessException IllegalAccessException
      * @throws Exception              Exception
      */
-    public void initialization() throws SQLException, ClassNotFoundException,
-            InstantiationException, IllegalAccessException, Exception {
+    public void initialization() throws Exception {
         this.testSql();
         if (this.getAuto().equalsIgnoreCase(AutoType.NONE.toString())) {
             return;

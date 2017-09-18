@@ -5,49 +5,44 @@ import cn.lastmiles.database.auto.sql.mysql.*;
 
 public class MysqlAutoDataSqlFactory implements IAutoDataSqlFactory {
 
-	@Override
-	public IAlterColumnSql getAlterColumnSql() {
-		return new MysqlAlterColumnSql();
-	}
+    public IAlterColumnSql getAlterColumnSql() {
+        return new MysqlAlterColumnSql();
+    }
 
-	@Override
-	public IAlterForeignKeySql getAlterForeignKeySql() {
-		return new MysqlAlterForeignKeySql();
-	}
+    public IAlterForeignKeySql getAlterForeignKeySql() {
+        return new MysqlAlterForeignKeySql();
+    }
 
-	@Override
-	public IAlterPrimaryKeySql getAlterPrimaryKeySql() {
-		return new MysqlAlterPrimaryKeySql();
-	}
+    public IAlterPrimaryKeySql getAlterPrimaryKeySql() {
+        return new MysqlAlterPrimaryKeySql();
+    }
 
-	@Override
-	public IConstraintSql getConstraintSql() {
-		return new MysqlConstraintSql();
-	}
+    public IAlterTableSql getAlterTableSql() {
+        return new MysqlAlterTableSql();
+    }
 
-	@Override
-	public ICreateTableSql getCreateTableSql() {
-		return new MysqlCreateTableSql();
-	}
+    public IConstraintSql getConstraintSql() {
+        return new MysqlConstraintSql();
+    }
 
-	@Override
-	public IDropAllConstraintSql getDropAllConstraintSql() {
-		return new MysqlDropAllConstraintSql();
-	}
+    public ICreateTableSql getCreateTableSql() {
+        return new MysqlCreateTableSql();
+    }
 
-	@Override
-	public IDropPrimaryKeySql getDropPrimaryKeySql() {
-		return new MysqlDropPrimaryKeySql();
-	}
+    public IDropAllConstraintSql getDropAllConstraintSql() {
+        return new MysqlDropAllConstraintSql();
+    }
 
-	@Override
-	public IDropTableSql getDropTableSql() {
-		return new MysqlDropTableSql();
-	}
+    public IDropPrimaryKeySql getDropPrimaryKeySql() {
+        return new MysqlDropPrimaryKeySql();
+    }
 
-	@Override
-	public IColumnTypeMap getColumnTypeMap() {
-		return new MysqlColumnTypeMap();
-	}
+    public IDropTableSql getDropTableSql() {
+        return new MysqlDropTableSql();
+    }
+
+    public IColumnTypeMap getColumnTypeMap() {
+        return new MysqlColumnTypeMap();
+    }
 
 }

@@ -9,7 +9,6 @@ import cn.lastmiles.database.auto.sql.entity.TableEntity;
 public class MysqlAlterForeignKeySql extends BaseSql implements
         IAlterForeignKeySql {
 
-	@Override
 	public void init(AutoDataSourceParam autoDataSourceParam,
 			TableEntity tableEntity) {
 		if (tableEntity.getForeignKeyEntites().size() <= 0) {

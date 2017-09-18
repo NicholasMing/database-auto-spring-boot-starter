@@ -14,7 +14,6 @@ import java.util.List;
 public class MysqlAlterPrimaryKeySql extends BaseSql implements
         IAlterPrimaryKeySql {
 
-    @Override
     public void init(AutoDataSourceParam autoDataSourceParam,
                      TableEntity tableEntity) {
         if (tableEntity.getPrimaryKeyEntity() == null

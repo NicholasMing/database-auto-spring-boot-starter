@@ -15,9 +15,12 @@ import java.util.Set;
 
 public class MysqlAlterColumnSql extends BaseSql implements IAlterColumnSql {
 
-    @Override
     public void init(AutoDataSourceParam autoDataSourceParam,
                      TableEntity tableEntity) throws SQLException {
+        if (autoDataSourceParam.getAuto().equals("create")) {
+            return;
+        }
+
         List<String> columnAddSqls = new ArrayList<String>();
         List<String> columnModifySqls = new ArrayList<String>();
         // Check column exists
@@ -27,7 +30,7 @@ public class MysqlAlterColumnSql extends BaseSql implements IAlterColumnSql {
         describeSql.append(" ");
         describeSql.append(tableEntity.getTableName());
         if (autoDataSourceParam.isShowSql()) {
-            logger.info("mybatiSql : " + describeSql);
+            logger.info("database auto sql : " + describeSql);
         }
         ResultSet resultSet = this.executeQuery(autoDataSourceParam,
                 describeSql.toString());

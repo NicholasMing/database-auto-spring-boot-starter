@@ -2,21 +2,23 @@ package cn.lastmiles.database.auto.sql;
 
 public interface IAutoDataSqlFactory {
 
-	public IConstraintSql getConstraintSql();
+    public IConstraintSql getConstraintSql();
 
-	public IAlterColumnSql getAlterColumnSql();
+    public IAlterColumnSql getAlterColumnSql();
 
-	public IAlterForeignKeySql getAlterForeignKeySql();
+    public IAlterForeignKeySql getAlterForeignKeySql();
 
-	public IAlterPrimaryKeySql getAlterPrimaryKeySql();
+    public IAlterPrimaryKeySql getAlterPrimaryKeySql();
 
-	public ICreateTableSql getCreateTableSql();
+    public IAlterTableSql getAlterTableSql();
 
-	public IDropAllConstraintSql getDropAllConstraintSql();
+    public ICreateTableSql getCreateTableSql();
 
-	public IDropPrimaryKeySql getDropPrimaryKeySql();
+    public IDropAllConstraintSql getDropAllConstraintSql();
 
-	public IDropTableSql getDropTableSql();
+    public IDropPrimaryKeySql getDropPrimaryKeySql();
 
-	public IColumnTypeMap getColumnTypeMap();
+    public IDropTableSql getDropTableSql();
+
+    public IColumnTypeMap getColumnTypeMap();
 }

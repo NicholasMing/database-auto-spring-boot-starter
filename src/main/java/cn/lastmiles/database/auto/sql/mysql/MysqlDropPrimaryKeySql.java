@@ -14,7 +14,6 @@ import java.util.List;
 public class MysqlDropPrimaryKeySql extends BaseSql implements
         IDropPrimaryKeySql {
 
-    @Override
     public void init(AutoDataSourceParam autoDataSourceParam,
                      TableEntity tableEntity) {
         if (tableEntity.getPrimaryKeyEntity() == null

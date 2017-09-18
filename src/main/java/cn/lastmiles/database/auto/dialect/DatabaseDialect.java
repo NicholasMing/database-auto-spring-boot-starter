@@ -47,7 +47,6 @@ public abstract class DatabaseDialect implements IDatabaseDialect {
         this.autoDataSourceParam = autoDataSourceParam;
     }
 
-    @Override
     public void invoke() throws SQLException {
         this.autoDataSourceParam.getConnection().setAutoCommit(false);
         if (this.autoDataSourceParam.getAuto().equalsIgnoreCase(
@@ -119,6 +118,7 @@ public abstract class DatabaseDialect implements IDatabaseDialect {
      * Update the table using the clazzes, add or update a column does not
      * delete the existing data and tables, delete a column will delete the data
      * in the column
+     * If the table has not exsit in database, Create the table using the clazzes
      *
      * @throws SQLException SQLException
      */
@@ -134,10 +134,16 @@ public abstract class DatabaseDialect implements IDatabaseDialect {
         List<String> createTableSqls = new ArrayList<String>();
         List<String> dropAllConstraintSqls = new ArrayList<String>();
         List<String> alterColumnSqls = new ArrayList<String>();
+        List<String> alterTableSqls = new ArrayList<String>();
         List<String> primaryKeySqls = new ArrayList<String>();
         List<String> foreignKeySqls = new ArrayList<String>();
         // create table
         for (TableEntity tableEntity : tableEntities) {
+            // alter table
+            IAlterTableSql alterTableSql = this.autoDataSqlFactory.getAlterTableSql();
+            autoDataSourceParam = alterTableSql.init(autoDataSourceParam, tableEntity);
+            alterTableSqls.addAll(alterTableSql.getSqls());
+
             // create table
             ICreateTableSql createTableSql = this.autoDataSqlFactory
                     .getCreateTableSql();
@@ -162,17 +168,17 @@ public abstract class DatabaseDialect implements IDatabaseDialect {
             primaryKeySql.init(autoDataSourceParam, tableEntity);
             primaryKeySqls.addAll(primaryKeySql.getSqls());
 
-            // alter foreign keys
+           /* //alter foreign keys
             IAlterForeignKeySql foreignKeySql = this.autoDataSqlFactory
                     .getAlterForeignKeySql();
             foreignKeySql.init(autoDataSourceParam, tableEntity);
-            foreignKeySqls.addAll(foreignKeySql.getSqls());
+            foreignKeySqls.addAll(foreignKeySql.getSqls());*/
         }
         this.sqls.addAll(createTableSqls);
         this.sqls.addAll(dropAllConstraintSqls);
         this.sqls.addAll(alterColumnSqls);
         this.sqls.addAll(primaryKeySqls);
-        this.sqls.addAll(foreignKeySqls);
+        //this.sqls.addAll(foreignKeySqls);
         // enable constraints
         IConstraintSql enableConstraintSql = this.autoDataSqlFactory
                 .getConstraintSql();
@@ -297,7 +303,7 @@ public abstract class DatabaseDialect implements IDatabaseDialect {
                     .createStatement();
             for (String sql : this.sqls) {
                 if (this.autoDataSourceParam.isShowSql()) {
-                    logger.info("mybatiSql : " + sql);
+                    logger.info("database auto sql  : " + sql);
                 }
                 statement.addBatch(sql);
             }

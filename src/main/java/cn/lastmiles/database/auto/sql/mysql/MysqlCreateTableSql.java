@@ -8,9 +8,11 @@ import cn.lastmiles.database.auto.sql.entity.TableEntity;
 
 public class MysqlCreateTableSql extends BaseSql implements ICreateTableSql {
 
-    @Override
     public void init(AutoDataSourceParam autoDataSourceParam,
                      TableEntity tableEntity) {
+        if (autoDataSourceParam.getAuto().equals("update")) {
+            return;
+        }
         StringBuffer sql = new StringBuffer();
         if (autoDataSourceParam.isFormatSql()) {
             sql.append("\n");

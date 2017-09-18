@@ -7,7 +7,6 @@ import cn.lastmiles.database.auto.driver.AutoDataSourceParam;
 
 public class MysqlDropTableSql extends BaseSql implements IDropTableSql {
 
-	@Override
 	public void init(AutoDataSourceParam autoDataSourceParam,
 			TableEntity tableEntity) {
 		StringBuffer sql = new StringBuffer();
